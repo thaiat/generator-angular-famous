@@ -4,7 +4,7 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
 
-var AngularFamousGenerator = yeoman.generators.Base.extend({
+var Generator = yeoman.generators.Base.extend({
     init: function() {
         this.pkg = require('../package.json');
 
@@ -50,4 +50,4 @@ var AngularFamousGenerator = yeoman.generators.Base.extend({
     }
 });
 
-module.exports = AngularFamousGenerator;
+module.exports = Generator;
