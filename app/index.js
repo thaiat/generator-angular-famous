@@ -7,8 +7,11 @@ var inquirer = require('yeoman-generator/node_modules/inquirer');
 
 var Generator = yeoman.generators.Base.extend({
     init: function() {
+        this.argument('appname', {
+            type: String,
+            required: false
+        });
         this.pkg = require('../package.json');
-
         this.on('end', function() {
             if (!this.options['skip-install']) {
                 this.installDependencies();
@@ -23,15 +26,13 @@ var Generator = yeoman.generators.Base.extend({
         this.log(yosay('Welcome to the marvelous AngularFamous generator!'));
 
         var prompts = [{
-            type: 'confirm',
-            name: 'someOption',
-            message: 'Would you like to enable this option?',
-            default: true
+            name: 'appname',
+            message: 'What\'s your project\'s name?',
+            default: this.appname,
         }];
 
         this.prompt(prompts, function(answers) {
-            this.someOption = answers.someOption;
-
+            this.appname = answers.appname;
             done();
         }.bind(this));
     },

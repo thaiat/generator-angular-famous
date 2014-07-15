@@ -12,7 +12,14 @@ gulp.task('jshint', function() {
         .pipe(jshint({
             lookup: true
         }))
-        .pipe(jshint.reporter('jshint-stylish'))
+
+    .pipe(jshint.reporter('jshint-stylish'))
+        .on('end', function() {
+            growly.notify('All files passed', {
+                title: 'PASSED - JsHint',
+                icon: constants.growly.successIcon
+            });
+        })
         .pipe(jshint.reporter('fail'))
         .on('error', function() {
 
@@ -21,14 +28,14 @@ gulp.task('jshint', function() {
                 icon: constants.growly.failedIcon
             });
 
-        }).on('end', function() {
+        })
+        .on('end', function() {
             growly.notify('All files passed', {
                 title: 'PASSED - JsHint',
                 icon: constants.growly.successIcon
             });
 
         });
-
 });
 
 gulp.task('jscs', function() {
