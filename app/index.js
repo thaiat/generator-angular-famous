@@ -34,6 +34,20 @@ var Generator = yeoman.generators.Base.extend({
         }
     },
 
+    askForCompass: function() {
+        var done = this.async();
+
+        this.prompt([{
+            type: 'confirm',
+            name: 'compass',
+            message: 'Would you like to use Sass (with Compass)?',
+            default: true
+        }], function(answers) {
+            this.compass = answers.compass;
+            done();
+        }.bind(this));
+    },
+
     askFor: function() {
         var done = this.async();
 
