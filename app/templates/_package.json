@@ -1,5 +1,10 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+    "name": "package",
+    "version": "0.0.0",
+    "dependencies": {},
+    "devDependencies": {
+        "gulp": "*",
+        "gulp-load-plugins": "*",
+        "require-dir": "*"
+    }
 }

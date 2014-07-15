@@ -3,6 +3,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
+var inquirer = require('yeoman-generator/node_modules/inquirer');
 
 var Generator = yeoman.generators.Base.extend({
     init: function() {
@@ -28,8 +29,8 @@ var Generator = yeoman.generators.Base.extend({
             default: true
         }];
 
-        this.prompt(prompts, function(props) {
-            this.someOption = props.someOption;
+        this.prompt(prompts, function(answers) {
+            this.someOption = answers.someOption;
 
             done();
         }.bind(this));
@@ -47,6 +48,8 @@ var Generator = yeoman.generators.Base.extend({
         this.copy('editorconfig', '.editorconfig');
         this.copy('jshintrc', '.jshintrc');
         this.copy('jscs.json', '.jscs.json');
+        this.copy('gulpfile.js', 'gulpfile.js');
+        this.directory('gulp', 'gulp');
     }
 });
 
