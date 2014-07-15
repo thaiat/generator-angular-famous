@@ -14,14 +14,14 @@ gulp.task('jshint', function() {
         }))
         .pipe(jshint.reporter('jshint-stylish'))
         .pipe(jshint.reporter('fail'))
-        .on("error", function() {
+        .on('error', function() {
 
             growly.notify('One or more jshint error', {
                 title: 'FAILED - JsHint',
                 icon: constants.growly.failedIcon
             });
 
-        }).on("end", function() {
+        }).on('end', function() {
             growly.notify('All files passed', {
                 title: 'PASSED - JsHint',
                 icon: constants.growly.successIcon
