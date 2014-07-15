@@ -3,7 +3,6 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
-var inquirer = require('yeoman-generator/node_modules/inquirer');
 
 var Generator = yeoman.generators.Base.extend({
     init: function() {
@@ -34,21 +33,7 @@ var Generator = yeoman.generators.Base.extend({
         }
     },
 
-    askForCompass: function() {
-        var done = this.async();
-
-        this.prompt([{
-            type: 'confirm',
-            name: 'compass',
-            message: 'Would you like to use Sass (with Compass)?',
-            default: true
-        }], function(answers) {
-            this.compass = answers.compass;
-            done();
-        }.bind(this));
-    },
-
-    askFor: function() {
+    askForAppname: function() {
         var done = this.async();
 
         var prompts = [{
@@ -59,6 +44,20 @@ var Generator = yeoman.generators.Base.extend({
 
         this.prompt(prompts, function(answers) {
             this.appname = answers.appname;
+            done();
+        }.bind(this));
+    },
+
+    askForCompass: function() {
+        var done = this.async();
+
+        this.prompt([{
+            type: 'confirm',
+            name: 'compass',
+            message: 'Would you like to use Sass (with Compass)?',
+            default: true
+        }], function(answers) {
+            this.compass = answers.compass;
             done();
         }.bind(this));
     },
