@@ -47,9 +47,9 @@ var Generator = yeoman.generators.Base.extend({
     projectfiles: function() {
         this.copy('editorconfig', '.editorconfig');
         this.copy('jshintrc', '.jshintrc');
-        this.copy('jscs.json', '.jscs.json');
+        this.copy('jscsrc', '.jscsrc');
         this.copy('gulpfile.js', 'gulpfile.js');
-        this.directory('gulp', 'gulp');
+        this.directory('gulp');
     }
 });
 

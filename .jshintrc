@@ -23,7 +23,6 @@
     "debug": false,
     "devel": true,
     "dojo": true,
-    "es5": true,
     "forin": true,
     "indent": 4,
     "latedef": true,

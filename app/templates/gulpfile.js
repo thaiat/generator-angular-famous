@@ -2,8 +2,8 @@
 
 var gulp = require('gulp');
 
-require('require-dir')('./gulp');
+require('require-dir')('./gulp/tasks');
 
-gulp.task('default', ['clean'], function () {
+gulp.task('default', ['clean'], function() {
     gulp.start('build');
 });

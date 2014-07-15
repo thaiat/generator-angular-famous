@@ -5,6 +5,12 @@
     "devDependencies": {
         "gulp": "*",
         "gulp-load-plugins": "*",
-        "require-dir": "*"
+        "require-dir": "*",
+        "gulp-jshint": "*",
+        "stream-combiner": "*",
+        "growly": "*",
+        "jshint-stylish": "*",
+        "gulp-jscs": "*",
+        "karma-growl-reporter": "*"
     }
 }
