@@ -46,7 +46,7 @@ var AngularFamousGenerator = yeoman.generators.Base.extend({
     projectfiles: function() {
         this.copy('editorconfig', '.editorconfig');
         this.copy('jshintrc', '.jshintrc');
-        this.directory('gulp', 'gulp');
+        this.copy('jscs.json', '.jscs.json');
     }
 });
 
