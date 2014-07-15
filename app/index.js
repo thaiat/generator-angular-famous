@@ -11,6 +11,8 @@ var Generator = yeoman.generators.Base.extend({
             type: String,
             required: false
         });
+        this.appname = this.appname || path.basename(process.cwd());
+        this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
         this.pkg = require('../package.json');
         this.on('end', function() {
             if (!this.options['skip-install']) {
@@ -19,11 +21,21 @@ var Generator = yeoman.generators.Base.extend({
         });
     },
 
+    welcome: function() {
+        // Have Yeoman greet the user.
+        if (!this.options['skip-welcome-message']) {
+            this.log(yosay('Welcome to the marvelous angular-famous generator!'));
+            this.log(
+                chalk.magenta(
+                    'Out of the box I include browserify, famous-angular and some angular recommended modules.' +
+                    '\n'
+                )
+            );
+        }
+    },
+
     askFor: function() {
         var done = this.async();
-
-        // Have Yeoman greet the user.
-        this.log(yosay('Welcome to the marvelous AngularFamous generator!'));
 
         var prompts = [{
             name: 'appname',
