@@ -64,7 +64,8 @@ var Generator = yeoman.generators.Base.extend({
 
     app: function() {
         this.mkdir('app');
-        this.mkdir('app/templates');
+        this.mkdir('src/client');
+        this.mkdir('src/server');
         this.mkdir('gulp');
 
     },
