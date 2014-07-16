@@ -28,13 +28,15 @@ describe('angular-famous generator', function() {
         var expected = [
             'package.json',
             'bower.json',
+            'README.md',
             '.jshintrc',
             'gulpfile.js',
             '.editorconfig',
             '.gitignore',
             '.bowerrc',
             'src/client/index.html',
-            'src/client/scripts/main.js'
+            'src/client/scripts/main.js',
+            'src/client/styles/main.css'
         ];
         helpers.mockPrompt(this.app, {
             'appname': 'my App'

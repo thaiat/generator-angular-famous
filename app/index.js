@@ -78,6 +78,7 @@ var Generator = yeoman.generators.Base.extend({
     projectfiles: function() {
         this.copy('_package.json', 'package.json');
         this.copy('_bower.json', 'bower.json');
+        this.copy('_README.md', 'README.md');
         this.copy('editorconfig', '.editorconfig');
         this.copy('jshintrc', '.jshintrc');
         this.copy('jscsrc', '.jscsrc');
