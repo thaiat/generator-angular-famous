@@ -1,5 +1,6 @@
 module.exports = function() {
     var constants = {
+        test  : '<%=bowerFolder%>',
         serve: {
             livereloadport: 35729,
             serverport: 5000

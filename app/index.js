@@ -10,6 +10,8 @@ var Generator = yeoman.generators.Base.extend({
             type: String,
             required: false
         });
+        var bowerrc = require('./templates/bowerrc.json');
+        this.bowerFolder = bowerrc.directory;
         this.appname = this.appname || path.basename(process.cwd());
         this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
         this.pkg = require('../package.json');
@@ -76,10 +78,12 @@ var Generator = yeoman.generators.Base.extend({
         this.copy('editorconfig', '.editorconfig');
         this.copy('jshintrc', '.jshintrc');
         this.copy('jscsrc', '.jscsrc');
-        this.copy('bowerrc', '.bowerrc');
+        this.copy('bowerrc.json', '.bowerrc');
         this.copy('gitignore', '.gitignore');
         this.copy('gulpfile.js', 'gulpfile.js');
+        this.copy('_index.html', 'src/client/index.html');
         this.directory('gulp');
+        this.copy('gulp/common/constants.js');
     }
 });
 

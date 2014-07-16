@@ -30,7 +30,8 @@ describe('angular-famous generator', function() {
             'gulpfile.js',
             '.editorconfig',
             '.gitignore',
-            '.bowerrc'
+            '.bowerrc',
+            'src/client/index.html'
         ];
         helpers.mockPrompt(this.app, {
             'appname': 'my App'
