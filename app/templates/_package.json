@@ -20,13 +20,16 @@
         "gulp-browserify": "~0.5.0",
         "browserify-shim": "~3.6.0",
         "watchify": "~0.6.4",
-        "gulp-watchify": "~0.2.0"
+        "gulp-watchify": "~0.2.0",
+        "gulp-webserver": "*",
+        "open": "*"
+
     },
     "browser": {
-        "angular": "./src/client/scripts/vendors/angular/angular.js",
-        "angular-mocks": "./src/client/scripts/vendors/angular-mocks/angular-mocks.js",
-        "angular-ui-router": "./src/client/scripts/vendors/angular-ui-router/release/angular-ui-router.js",
-        "famous-angular": "./src/client/scripts/vendors/famous-angular/dist/famous-angular-browserify.js"
+        "angular": "<%=bowerDirectory%>/angular/angular.js",
+        "angular-mocks": "<%=bowerDirectory%>/angular-mocks/angular-mocks.js",
+        "angular-ui-router": "<%=bowerDirectory%>/angular-ui-router/release/angular-ui-router.js",
+        "famous-angular": "<%=bowerDirectory%>/famous-angular/dist/famous-angular-browserify.js"
     },
     "browserify": {
         "transform": [

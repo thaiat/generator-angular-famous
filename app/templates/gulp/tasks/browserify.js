@@ -1,21 +1,28 @@
 'use strict';
 var gulp = require('gulp');
-var rename = require('gulp-rename');
-var browserify = require('gulp-browserify');
-var watchify = require('gulp-watchify');
+var $ = require('gulp-load-plugins')();
+var rename = $.rename;
+var browserify = $.browserify;
+var watchify = $.watchify;
+
+var constants = require('../common/constants')();
+
+var scriptMainPath = ['.', constants.serve.root, constants.serve.scripts, constants.serve.scriptMain].join('/');
+var scriptPath = ['.', constants.serve.root, constants.serve.scripts].join('/');
+var scriptBundle = constants.serve.scriptBundle;
 
 gulp.task('browserify', function() {
-    gulp.src('./src/client/scripts/main.js')
+    gulp.src(scriptMainPath)
         .pipe(browserify())
-        .pipe(rename('bundle.js'))
-        .pipe(gulp.dest('./src/client/scripts'));
+        .pipe(rename(scriptBundle))
+        .pipe(gulp.dest(scriptPath));
 });
 
 gulp.task('watchify', watchify(function(watchify) {
-    gulp.src('./src/client/scripts/main.js')
+    gulp.src(scriptMainPath)
         .pipe(watchify({
             watch: true
         }))
-        .pipe(rename('bundle.js'))
-        .pipe(gulp.dest('./src/client/scripts'));
+        .pipe(rename(scriptBundle))
+        .pipe(gulp.dest(scriptPath));
 }));

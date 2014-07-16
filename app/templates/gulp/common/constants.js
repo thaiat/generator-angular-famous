@@ -1,9 +1,13 @@
 module.exports = function() {
     var constants = {
-        test  : '<%=bowerFolder%>',
+        bowerDirectory: './src/client/bower_components',
         serve: {
-            livereloadport: 35729,
-            serverport: 5000
+            root: 'src/client',
+            scripts: 'scripts',
+            scriptMain: 'main.js',
+            scriptBundle: 'bundle.js',
+            livereload: 35729,
+            port: 5000
         },
         libs: {
             fontAwesomeCss: 'styles/font-awesome/4.0.3/css/font-awesome.css',

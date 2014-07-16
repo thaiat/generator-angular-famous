@@ -3,14 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <title><%=appname%></title>
+    <title>
+        <%=appname%>
+    </title>
     <link rel="stylesheet" href="bower_components/famous/core/famous.css">
     <link rel="stylesheet" href="bower_components/famous-angular/dist/famous-angular.css">
+    <link rel="stylesheet" href="styles/main.css">
+
 </head>
 
-<body fa-app>
+<body fa-app ng-app="main">
 
-    <h1><%=appname%></h1>
+    <h1>
+        <%=appname%>
+    </h1>
+    <fa-surface fa-background-color="'red'" fa-size="[300,300]">Hello Famous</fa-surface>
     <ui-view></ui-view>
 
     <script src="scripts/bundle.js"></script>

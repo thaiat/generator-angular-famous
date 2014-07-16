@@ -4,14 +4,15 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
 
+var constants = require('./templates/gulp/common/constants.js')();
+
 var Generator = yeoman.generators.Base.extend({
     init: function() {
         this.argument('appname', {
             type: String,
             required: false
         });
-        var bowerrc = require('./templates/bowerrc.json');
-        this.bowerFolder = bowerrc.directory;
+        this.bowerDirectory = constants.bowerDirectory;
         this.appname = this.appname || path.basename(process.cwd());
         this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
         this.pkg = require('../package.json');
@@ -65,8 +66,10 @@ var Generator = yeoman.generators.Base.extend({
     },
 
     app: function() {
-        this.mkdir('app');
+        this.mkdir('src');
         this.mkdir('src/client');
+        this.mkdir('src/client/scripts');
+        this.mkdir('src/client/styles');
         this.mkdir('src/server');
         this.mkdir('gulp');
 
@@ -83,6 +86,8 @@ var Generator = yeoman.generators.Base.extend({
         this.copy('gulpfile.js', 'gulpfile.js');
         this.copy('_index.html', 'src/client/index.html');
         this.directory('gulp');
+        this.directory('scripts', 'src/client/scripts');
+        this.directory('styles', 'src/client/styles');
         this.copy('gulp/common/constants.js');
     }
 });

@@ -1,7 +1,9 @@
 /*global describe, beforeEach, it */
 'use strict';
+var fs = require('fs');
 var path = require('path');
 var helpers = require('yeoman-generator').test;
+var constants = require('../app/templates/gulp/common/constants')();
 
 describe('angular-famous generator', function() {
 
@@ -31,7 +33,8 @@ describe('angular-famous generator', function() {
             '.editorconfig',
             '.gitignore',
             '.bowerrc',
-            'src/client/index.html'
+            'src/client/index.html',
+            'src/client/scripts/main.js'
         ];
         helpers.mockPrompt(this.app, {
             'appname': 'my App'
@@ -72,6 +75,21 @@ describe('angular-famous generator', function() {
             checkPkgPropertyValue(pkg, 'version', versionExpected);
             var bower = require(path.join(__dirname, 'temp', 'bower.json'));
             checkPkgPropertyValue(bower, 'version', versionExpected);
+
+            done();
+        });
+    });
+
+    it('bower directory has expected value from gulp/common/constants.js', function(done) {
+        helpers.mockPrompt(this.app, {
+            'appname': appname
+        });
+        this.app.options['skip-install'] = true;
+
+        this.app.run({}, function() {
+            var body = fs.readFileSync(path.join(__dirname, 'temp', '.bowerrc'), 'utf8');
+            var pkg = JSON.parse(body);
+            checkPkgPropertyValue(pkg, 'directory', constants.bowerDirectory);
 
             done();
         });
