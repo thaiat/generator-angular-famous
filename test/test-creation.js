@@ -4,6 +4,11 @@ var path = require('path');
 var helpers = require('yeoman-generator').test;
 
 describe('angular-famous generator', function() {
+
+    var appname = 'my App';
+    var appnameExpected = 'my-app';
+    var versionExpected = '1.0.0';
+
     beforeEach(function(done) {
         helpers.testDirectory(path.join(__dirname, 'temp'), function(err) {
             if (err) {
@@ -20,13 +25,15 @@ describe('angular-famous generator', function() {
     it('creates expected files', function(done) {
         var expected = [
             'package.json',
+            'bower.json',
             '.jshintrc',
             'gulpfile.js',
-            '.editorconfig'
+            '.editorconfig',
+            '.gitignore',
+            '.bowerrc'
         ];
-
         helpers.mockPrompt(this.app, {
-            'someOption': true
+            'appname': 'my App'
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function() {
@@ -37,14 +44,34 @@ describe('angular-famous generator', function() {
 
     it('package.json and bower.json has expected appname', function(done) {
         helpers.mockPrompt(this.app, {
-            'appname': 'my App'
+            'appname': appname
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function() {
             var pkg = require(path.join(__dirname, 'temp', 'package.json'));
-            console.log(pkg);
-            helpers.assertFileContent('package.json', /"name": "toto"/);
-            helpers.assertFileContent('bower.json', /"name": "toto"/);
+            checkPkgPropertyValue(pkg, 'name', appnameExpected);
+            var bower = require(path.join(__dirname, 'temp', 'bower.json'));
+            checkPkgPropertyValue(bower, 'name', appnameExpected);
+
+            done();
+        });
+    });
+
+    var checkPkgPropertyValue = function(pkg, propertyName, propertyValue) {
+        helpers.assertTextEqual(pkg[propertyName], propertyValue);
+    };
+
+    it('package.json and bower.json has expected version', function(done) {
+        helpers.mockPrompt(this.app, {
+            'appname': appname
+        });
+        this.app.options['skip-install'] = true;
+        this.app.run({}, function() {
+            var pkg = require(path.join(__dirname, 'temp', 'package.json'));
+            checkPkgPropertyValue(pkg, 'version', versionExpected);
+            var bower = require(path.join(__dirname, 'temp', 'bower.json'));
+            checkPkgPropertyValue(bower, 'version', versionExpected);
+
             done();
         });
     });

@@ -1,7 +1,10 @@
 {
     "name": "<%= _.slugify(appname) %>",
-    "version": "0.0.0",
-    "dependencies": {},
+    "version": "1.0.0",
+    "dependencies": {
+        "famous": "http://code.famo.us/famous/common/famous-0.2.2.tar.gz",
+        "hapi": "~6.0.2"
+    },
     "devDependencies": {
         "gulp": "*",
         "gulp-load-plugins": "*",
@@ -11,6 +14,47 @@
         "growly": "*",
         "jshint-stylish": "*",
         "gulp-jscs": "*",
-        "karma-growl-reporter": "*"
+        "karma-growl-reporter": "*",
+        "gulp-rename": "~1.2.0",
+        "browserify": "~4.2.0",
+        "gulp-browserify": "~0.5.0",
+        "browserify-shim": "~3.6.0",
+        "watchify": "~0.6.4",
+        "gulp-watchify": "~0.2.0"
+    },
+    "browser": {
+        "angular": "./src/client/scripts/vendors/angular/angular.js",
+        "angular-mocks": "./src/client/scripts/vendors/angular-mocks/angular-mocks.js",
+        "angular-ui-router": "./src/client/scripts/vendors/angular-ui-router/release/angular-ui-router.js",
+        "famous-angular": "./src/client/scripts/vendors/famous-angular/dist/famous-angular-browserify.js"
+    },
+    "browserify": {
+        "transform": [
+            "browserify-shim"
+        ]
+    },
+    "browserify-shim": {
+        "angular": {
+            "exports": "angular"
+        },
+        "angular-mocks": {
+            "depends": [
+                "angular"
+            ]
+        },
+        "angular-ui-router": {
+            "depends": [
+                "angular"
+            ]
+        },
+        "famous": {
+            "exports": "famous"
+        },
+        "famous-angular": {
+            "depends": [
+                "angular",
+                "famous"
+            ]
+        }
     }
 }
