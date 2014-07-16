@@ -1,6 +1,11 @@
 {
     "name": "<%= _.slugify(appname) %>",
     "version": "1.0.0",
+    "scripts": {
+        "prepublish": "bash deploy/prepublish.sh",
+        "start": "node src/server/server.js",
+        "test": "karma start --single-run"
+    },
     "dependencies": {
         "famous": "http://code.famo.us/famous/common/famous-0.2.2.tar.gz",
         "hapi": "~6.0.2"
@@ -23,7 +28,6 @@
         "gulp-watchify": "~0.2.0",
         "gulp-webserver": "*",
         "open": "*"
-
     },
     "browser": {
         "angular": "<%=bowerDirectory%>/angular/angular.js",

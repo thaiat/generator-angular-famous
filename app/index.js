@@ -89,6 +89,7 @@ var Generator = yeoman.generators.Base.extend({
         this.directory('gulp');
         this.directory('scripts', 'src/client/scripts');
         this.directory('styles', 'src/client/styles');
+        this.directory('deploy');
         this.copy('gulp/common/constants.js');
     }
 });
