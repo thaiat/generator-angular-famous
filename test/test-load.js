@@ -1,5 +1,5 @@
-/*global describe, beforeEach, it*/
 'use strict';
+
 var assert = require('assert');
 
 describe('angular-famous generator', function() {

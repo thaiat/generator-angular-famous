@@ -1,3 +1,5 @@
+'use strict';
+
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
@@ -16,6 +18,7 @@ var Generator = yeoman.generators.Base.extend({
         this.appname = this.appname || path.basename(process.cwd());
         this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
         this.pkg = require('../package.json');
+        this.scripts = ['.', constants.serve.root, constants.serve.scripts].join('/');
         this.on('end', function() {
             if (!this.options['skip-install']) {
                 this.installDependencies();
@@ -82,6 +85,7 @@ var Generator = yeoman.generators.Base.extend({
         this.copy('editorconfig', '.editorconfig');
         this.copy('jshintrc', '.jshintrc');
         this.copy('jscsrc', '.jscsrc');
+         this.copy('jsbeautifyrc', '.jsbeautifyrc');
         this.copy('bowerrc.json', '.bowerrc');
         this.copy('gitignore', '.gitignore');
         this.copy('gulpfile.js', 'gulpfile.js');
@@ -91,6 +95,7 @@ var Generator = yeoman.generators.Base.extend({
         this.directory('styles', 'src/client/styles');
         this.directory('deploy');
         this.copy('gulp/common/constants.js');
+        this.copy('_karma.conf.js', 'karma.conf.js');
     }
 });
 

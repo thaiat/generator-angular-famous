@@ -1,5 +1,5 @@
-/*global describe, beforeEach, it */
 'use strict';
+
 var fs = require('fs');
 var path = require('path');
 var helpers = require('yeoman-generator').test;
@@ -30,13 +30,15 @@ describe('angular-famous generator', function() {
             'bower.json',
             'README.md',
             '.jshintrc',
+            '.jsbeautifyrc',
             'gulpfile.js',
             '.editorconfig',
             '.gitignore',
             '.bowerrc',
             'src/client/index.html',
             'src/client/scripts/main.js',
-            'src/client/styles/main.css'
+            'src/client/styles/main.css',
+            'karma.conf.js'
         ];
         helpers.mockPrompt(this.app, {
             'appname': 'my App'
