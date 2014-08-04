@@ -31,6 +31,7 @@ describe('angular-famous generator', function() {
             'README.md',
             '.jshintrc',
             '.jsbeautifyrc',
+            '.tern-project',
             'gulpfile.js',
             '.editorconfig',
             '.gitignore',

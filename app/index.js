@@ -85,7 +85,8 @@ var Generator = yeoman.generators.Base.extend({
         this.copy('editorconfig', '.editorconfig');
         this.copy('jshintrc', '.jshintrc');
         this.copy('jscsrc', '.jscsrc');
-         this.copy('jsbeautifyrc', '.jsbeautifyrc');
+        this.copy('jsbeautifyrc', '.jsbeautifyrc');
+        this.copy('tern-project', '.tern-project');
         this.copy('bowerrc.json', '.bowerrc');
         this.copy('gitignore', '.gitignore');
         this.copy('gulpfile.js', 'gulpfile.js');
